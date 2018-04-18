@@ -1,0 +1,54 @@
+{{!-- open bootstrap container - leveraging the auto sizing --}}
+<div class="container text-center">
+
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">
+                <span>
+                    <i class="fas text-danger bg-warning">&#xf0c9</i>
+                </span> Eat-da-burger! Uff da!</h1>
+        </div>
+    </div>
+    <img class="img-fluid text-center" src="/assets/img/sonic-burger.jpg"> {{!-- open row --}}
+
+    <div class="row">
+        <div class="card col-sm-12 col-md-5 bg-warning mx-auto pb-1 mb-3">
+            <h4 class="text-center">Burgers that haven't been eaten!</h4>
+            <div class="text-left">
+                {{#each burgers_data}} {{#unless devoured_bool}}
+                <div class="col-12 d-inline-block">
+                    {{id}}. {{burger_name}} {{#unless devoured_bool}}
+                    <button class="devoured-button btn btn-sm my-1 float-right" burger-id="{{id}}" devoured-data="{{devoured_bool}}">
+                        Devour da Burger</button>
+                    {{/unless}} {{#if devoured_bool}}
+                    <button class="devoured-button btn btn-sm my-1 float-right" burger-id="{{id}}" devoured-data="{{devoured_bool}}">
+                        Eat it again?!</button>
+                    {{/if}}
+                </div>
+                {{/unless}} {{/each}}
+            </div>
+        </div>
+
+        {{!-- close first column --}} {{!-- open second column --}}
+        <div class="card col-sm-12 col-md-5 bg-warning mx-auto pb-2 mb-3">
+            <h4>Burgers that have been eaten!</h4>
+            <div class="text-left">
+                {{#each burgers_data}} {{#if devoured_bool}} {{> burger-block devoured-data=true}} {{/if}} {{/each}}
+            </div>
+        </div>
+        {{!-- close first column --}}
+    </div>
+    {{!-- close row --}}
+    <div class="row text-center">
+        <div class="card col-md-5 mx-auto bg-warning pb-2 mb-2">
+            <form class="create-burger-form">
+                <div class="form-group ">
+                    <label for="burger-name"></label>
+                    <input class="form-control" type="text" id="burger-name" name="burgerName" placeholder="Add a Burger to Uneaten List">
+                </div>
+
+                <button class="btn btn-secondary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    {{!-- close container --}}
