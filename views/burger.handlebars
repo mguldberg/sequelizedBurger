@@ -15,17 +15,11 @@
         <div class="card col-sm-12 col-md-5 bg-warning mx-auto pb-1 mb-3">
             <h4 class="text-center">Burgers that haven't been eaten!</h4>
             <div class="text-left">
-                {{#each burgers_data}} {{#unless devoured_bool}}
-                <div class="col-12 d-inline-block">
-                    {{id}}. {{burger_name}} {{#unless devoured_bool}}
-                    <button class="devoured-button btn btn-sm my-1 float-right" burger-id="{{id}}" devoured-data="{{devoured_bool}}">
-                        Devour da Burger</button>
-                    {{/unless}} {{#if devoured_bool}}
-                    <button class="devoured-button btn btn-sm my-1 float-right" burger-id="{{id}}" devoured-data="{{devoured_bool}}">
-                        Eat it again?!</button>
-                    {{/if}}
-                </div>
-                {{/unless}} {{/each}}
+                {{#each burgers_data}} 
+                    {{#unless devoured_bool}} 
+                        {{> burger-block devoured-data=false}}
+                    {{/unless}} 
+                {{/each}}
             </div>
         </div>
 
@@ -33,7 +27,11 @@
         <div class="card col-sm-12 col-md-5 bg-warning mx-auto pb-2 mb-3">
             <h4>Burgers that have been eaten!</h4>
             <div class="text-left">
-                {{#each burgers_data}} {{#if devoured_bool}} {{> burger-block devoured-data=true}} {{/if}} {{/each}}
+                {{#each burgers_data}} 
+                    {{#if devoured_bool}} 
+                        {{> burger-block devoured-data=true}} 
+                    {{/if}} 
+                {{/each}}
             </div>
         </div>
         {{!-- close first column --}}

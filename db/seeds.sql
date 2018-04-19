@@ -1,3 +1,14 @@
-INSERT INTO burgers (burger_name, devoured_bool) VALUES ('bacon burger', false);
-INSERT INTO burgers (burger_name, devoured_bool) VALUES ('bison burger', false);
-INSERT INTO burgers (burger_name, devoured_bool) VALUES ('juicy lucy', false);
+### Schema
+
+CREATE DATABASE burgers_db;
+
+USE burgers_db;
+
+CREATE TABLE burgers
+(
+	id int NOT NULL AUTO_INCREMENT,
+	burger_name varchar(255) NOT NULL,
+    devoured_bool boolean NOT NULL,
+	PRIMARY KEY (id)
+);
+

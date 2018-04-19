@@ -19,13 +19,13 @@ router.get("/", function (req, res) {
     // findAll returns all entries for a table when used with no options
     db.BetterBurger.findAll({}).then(function (dbBurger) {
 
-        console.log(dbBurger);
+        // console.log(dbBurger);
         // console.log(dbBurger.dataValues);
         var handlebarsObject = {
             burgers_data: dbBurger,
         };
         console.log("in route get / ");
-        console.log(handlebarsObject);
+        // console.log(handlebarsObject);
         // console.log(JSON.stringify(dbBurger));
         res.render("burger", handlebarsObject);
     });

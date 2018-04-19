@@ -7,15 +7,13 @@
 // );
 
 module.exports = function (sequelize, DataTypes) {
-    var Burger = sequelize.define("BetterBurger", {
+    var BetterBurger = sequelize.define("BetterBurger", {
         burger_name: {
             type: DataTypes.STRING,
-            // AllowNull is a flag that restricts a todo from being entered if it doesn't
-            // have a text value
-            allowNull: false,
             // len is a validation that checks that our todo is between 1 and 140 characters
+            allowNull: false,
             validate: {
-                len: [1, 30]
+                len: [5, 30]
             }
         },
         devoured_bool: {
@@ -24,6 +22,15 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: false
         }
     });
-    return Burger;
+
+    BetterBurger.associate = function(models) {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        BetterBurger.hasMany(models.BetterBurgerDiner, {
+        
+        });
+      };
+    
+    return BetterBurger;
 };
 

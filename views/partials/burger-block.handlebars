@@ -1,16 +1,17 @@
-
 {{!--                                       +--------------------+ --}}
 {{!-- sample layout -> 1. California Burger | Devour this Burger | --}} 
-{{!--                                       +--------------------+ --}}
+{{!--                                       +--------------------+ --}} 
 {{!-- set the class to determine if the main.js click handler will apply to it or not --}}
 <div class="col-12 d-inline-block">
-    {{dataValues.id}}. {{dataValues.burger_name}} 
-    {{#unless dataValues.devoured_bool}}
-    <button class="devoured-button btn btn-sm my-1 float-right" burger-id="{{dataValues.id}}" devoured-data="{{dataValues.devoured_bool}}">
-        Devour da Burger</button>
-    {{/unless}}
+    {{dataValues.id}}. {{dataValues.burger_name}} {{#unless dataValues.devoured_bool}}
+    <form class="eater-button">
+        <input type="text" id="diner-name" name="diner-name" placeholder="Enter your name">
+        <input type="submit" value="Devour da Burger" class="devoured-button btn btn-sm my-1 float-right" burger-id="{{dataValues.id}}" devoured-data="{{dataValues.devoured_bool}}">
+    </form>
+    {{/unless}} 
+    
     {{#if dataValues.devoured_bool}}
-    <button class="devoured-button btn btn-sm my-1 float-right" burger-id="{{dataValues.id}}" devoured-data="{{dataValues.devoured_bool}}">
-        Eat it again?!</button>
+        <button class="eat-again-button btn btn-sm my-1 float-right" burger-id="{{dataValues.id}}" devoured-data="{{dataValues.devoured_bool}}">
+            Eat it again?!</button>
     {{/if}}
 </div>
