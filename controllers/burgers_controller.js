@@ -28,7 +28,7 @@ router.post("/api/burger/:burgerName", function (req, res) {
             // Whenever a validation or flag fails, an error is thrown
             // We can "catch" the error to prevent it from being "thrown", 
             // which could crash our node app
-            res.status(500).send(err);
+            res.status(400).send(err);
 
         });
 });

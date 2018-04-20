@@ -39,11 +39,14 @@ $(function () {
                 // Reload the page to get the updated list
                 location.reload();
             })
-        // .fail(function (err) {
-
-        //     alert("dfjdfkl00");
-        //     console.log("getting an error", err);
-        // });
+        .fail(function (err) {
+            console.log("getting an error from the database", err.status, err.statusText);
+            console.log(err.status);
+            console.log(err.responseJSON.errors["0"]);
+            $(".modal-title").text("HTTP Error : " + err.status  +" "+ err.statusText);
+            $("#error-text").text(err.responseJSON.errors["0"].message);
+            $("#burger-error-modal").modal('toggle');
+        });
     });
 
 
@@ -91,10 +94,13 @@ $(function () {
                 location.reload();
             })
             .fail(function (err) {
-
-                alert("dfjdfkl00");
-                console.log("getting an error", err);
-            })
+                console.log("getting an error from the database", err.status, err.statusText);
+                console.log(err.status);
+                console.log(err.responseJSON.errors["0"]);
+                $(".modal-title").text("HTTP Error : " + err.status  +" "+ err.statusText);
+                $("#error-text").text(err.responseJSON.errors["0"].message);
+                $("#burger-error-modal").modal('toggle');
+            });
 
     });
 });

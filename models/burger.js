@@ -13,7 +13,10 @@ module.exports = function (sequelize, DataTypes) {
             // len is a validation that checks that our todo is between 1 and 140 characters
             allowNull: false,
             validate: {
-                len: [1, 30]
+                len: {
+                    args: [3, 30],
+                    msg: "Your burger name is not long enough or too long.  It must be between 3 and 30 characters."
+                }
             }
         },
         devoured_bool: {
@@ -23,14 +26,14 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    BetterBurger.associate = function(models) {
+    BetterBurger.associate = function (models) {
         // Associating Author with Posts
         // When an Author is deleted, also delete any associated Posts
         BetterBurger.hasMany(models.BetterBurgerDiner, {
-        
+
         });
-      };
-    
+    };
+
     return BetterBurger;
 };
 

@@ -14,8 +14,9 @@ module.exports = function (sequelize, DataTypes) {
             // have a text value
             allowNull: false,
             // len is a validation that checks that our todo is between 1 and 140 characters
-            validate: {
-                len: [1, 30]
+            len: {
+                args: [2, 15],
+                msg: "Your name is not long enough or too long.  It must be between 2 and 15 characters."
             }
         },
         burgers_eaten: {

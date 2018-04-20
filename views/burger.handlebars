@@ -15,11 +15,7 @@
         <div class="card col-sm-12 col-md-5 bg-warning mx-auto pb-1 mb-3">
             <h4 class="text-center">Burgers that haven't been eaten!</h4>
             <div class="text-left">
-                {{#each burgers_data}} 
-                    {{#unless devoured_bool}} 
-                        {{> burger-block devoured-data=false}}
-                    {{/unless}} 
-                {{/each}}
+                {{#each burgers_data}} {{#unless devoured_bool}} {{> burger-block devoured-data=false}} {{/unless}} {{/each}}
             </div>
         </div>
 
@@ -27,11 +23,7 @@
         <div class="card col-sm-12 col-md-5 bg-warning mx-auto pb-2 mb-3">
             <h4>Burgers that have been eaten!</h4>
             <div class="text-left">
-                {{#each burgers_data}} 
-                    {{#if devoured_bool}} 
-                        {{> burger-block devoured-data=true}} 
-                    {{/if}} 
-                {{/each}}
+                {{#each burgers_data}} {{#if devoured_bool}} {{> burger-block devoured-data=true}} {{/if}} {{/each}}
             </div>
         </div>
         {{!-- close first column --}}
@@ -49,4 +41,29 @@
             </form>
         </div>
     </div>
-    {{!-- close container --}}
+    <!-- The Modal -->
+    <div class="modal fade" id="burger-error-modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body ">
+                    <h4 id="error-text"></h4>       
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- close container --}}
