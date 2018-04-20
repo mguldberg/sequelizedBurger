@@ -38,9 +38,7 @@ router.post("/api/burger/:burgerName?", function (req, res) {
 router.put("/api/burger/:id", function (req, res) {
     console.log("in update of burger::" + req.params.id);
     console.log("EATEN  ::" + req.body.eaten);
-    console.log("burger name  ::" + req.body.burger_name);
-    console.log("diner name  ::" + req.body.diner);
-
+  
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
     db.BetterBurger.update({

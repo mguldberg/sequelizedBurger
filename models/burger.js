@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
             // len is a validation that checks that our todo is between 1 and 140 characters
             allowNull: false,
             validate: {
-                len: [5, 30]
+                len: [1, 30]
             }
         },
         devoured_bool: {

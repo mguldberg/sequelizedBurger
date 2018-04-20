@@ -10,10 +10,10 @@ $(function () {
     //handle Devoured button click - will move button to the other side of the screen once the DB is updated
     $(".devoured-button").on("click", function (event) {
         var id = $(this).attr("burger-id");
-        var diner = $(this).attr("#diner-name");
-        
+        var diner = $(this).attr("#diner-name");        
         console.log($(this).attr("burger-id"));
-        console.log($(this).attr("name"));
+        console.log(diner);
+        
 
         var newEatenData = {
             eaten: true,
