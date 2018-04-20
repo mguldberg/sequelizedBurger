@@ -7,33 +7,47 @@ audioWinning.play();
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
 
-    //handle Devoured button click - will move button to the other side of the screen once the DB is updated
-    $(".devoured-button").on("click", function (event) {
+    //handle not eaten yet button click - will move button to the other side of the screen once the DB is updated
+    $(".eat-button-form").on("submit", function (event) {
+        event.preventDefault();
+
+        var eatenState = $(this).attr("eaten-data");
         var id = $(this).attr("burger-id");
-        var diner = $(this).attr("#diner-name");        
+        var diner = $("#diner-name").val();
         console.log($(this).attr("burger-id"));
         console.log(diner);
-        
+
+        if (eatenState == "false")
+            eatenState = true
+        else
+            eatenState = false
 
         var newEatenData = {
-            eaten: true,
+            eaten: eatenState,
             diner: diner
         };
+        console.log(newEatenData.eaten);
 
         // Send the PUT request.
         $.ajax("/api/burger/" + id, {
             type: "PUT",
             data: newEatenData,
-        }).then(
-            function () {
-                console.log("changed burger devoured state to", newEatenState.eaten);
+        }).done(
+            function (res) {
+                console.log(res);
+                console.log("changed burger devoured state to", newEatenData.eaten);
                 // Reload the page to get the updated list
                 location.reload();
-            });
+            })
+        // .fail(function (err) {
+
+        //     alert("dfjdfkl00");
+        //     console.log("getting an error", err);
+        // });
     });
 
 
-    //handle Devoured button click - will move button to the other side of the screen once the DB is updated
+    //handle eat-again-button click - will move button to the other side of the screen once the DB is updated
     $(".eat-again-button").on("click", function (event) {
         console.log("inside eat-again-button");
         var id = $(this).attr("burger-id");

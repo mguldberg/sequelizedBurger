@@ -3,15 +3,16 @@
 {{!--                                       +--------------------+ --}} 
 {{!-- set the class to determine if the main.js click handler will apply to it or not --}}
 <div class="col-12 d-inline-block">
-    {{dataValues.id}}. {{dataValues.burger_name}} {{#unless dataValues.devoured_bool}}
-    <form class="eater-button">
-        <input type="text" id="diner-name" name="diner-name" placeholder="Enter your name">
-        <input type="submit" value="Devour da Burger" class="devoured-button btn btn-sm my-1 float-right" burger-id="{{dataValues.id}}" devoured-data="{{dataValues.devoured_bool}}">
-    </form>
+    {{dataValues.id}}. {{dataValues.burger_name}} 
+    {{#unless dataValues.devoured_bool}}
+        <form class="eat-button-form" burger-id="{{dataValues.id}}" eaten-data="{{dataValues.devoured_bool}}">
+            <input type="text" id="diner-name" name="diner-name" placeholder="Enter your name">
+            <input type="submit" value="Devour da Burger" class="not-eaten-yet-button btn btn-sm my-1 float-right" ">
+        </form>
     {{/unless}} 
     
     {{#if dataValues.devoured_bool}}
-        <button class="eat-again-button btn btn-sm my-1 float-right" burger-id="{{dataValues.id}}" devoured-data="{{dataValues.devoured_bool}}">
+        <button class="eat-again-button btn btn-sm my-1 float-right" burger-id="{{dataValues.id}}" eaten-data="{{dataValues.devoured_bool}}">
             Eat it again?!</button>
     {{/if}}
 </div>

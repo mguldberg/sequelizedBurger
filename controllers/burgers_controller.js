@@ -8,7 +8,7 @@ var db = require("../models");
 // Create all our routes and set up logic within those routes where required.
 
 // Handles adding burger to DB and the screen
-router.post("/api/burger/:burgerName?", function (req, res) {
+router.post("/api/burger/:burgerName", function (req, res) {
     console.log("in burgername handler");
     // create takes an argument of an object describing the item we want to
     // insert into our table. In this case we just we pass in an object with a text
@@ -38,7 +38,8 @@ router.post("/api/burger/:burgerName?", function (req, res) {
 router.put("/api/burger/:id", function (req, res) {
     console.log("in update of burger::" + req.params.id);
     console.log("EATEN  ::" + req.body.eaten);
-  
+    console.log("diner  ::" + req.body.diner);
+
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
     db.BetterBurger.update({
@@ -53,6 +54,7 @@ router.put("/api/burger/:id", function (req, res) {
             res.json(dbBurgerResponse);
         })
         .catch(function (err) {
+            console.log("error on put");
             // Whenever a validation or flag fails, an error is thrown
             // We can "catch" the error to prevent it from being "thrown", which could crash our node app
             res.json(err);
